@@ -1,0 +1,285 @@
+{
+	"info": {
+		"_postman_id": "1de0807f-e61d-41e9-8e2d-2ceb091fc984",
+		"name": "ChangeRequest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25417318"
+	},
+	"item": [
+		{
+			"name": "Get_ChangeRequest",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<request>\r\n    <entry>\r\n        <short_description>Weekdays Are Started</short_description>\r\n    </entry>\r\n</request>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev71008.service-now.com/api/now/table/change_request",
+					"protocol": "https",
+					"host": [
+						"dev71008",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"change_request"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Indian Team",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"India\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Virat\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Kohli's Redemption is Awesome\");\r",
+							"});\r",
+							"pm.test(\"Siraj\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Siraj Comeback in ODI's\");\r",
+							"});\r",
+							"var res=pm.response.json();\r",
+							"console.log(res.result.sys_id)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"short_description\":\"Kohli's Redemption is Awesome\",\r\n    \"description\":\"Siraj Comeback in ODI's\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev71008.service-now.com/api/now/table/change_request",
+					"protocol": "https",
+					"host": [
+						"dev71008",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"change_request"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"short_description\":\"Kohli has been dropped from t20s\",\r\n    \"description\":\"Siraj born in Hyderabad \"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev71008.service-now.com/api/now/table/change_request/ae63fa7597202110e5153bc3f153afce",
+					"protocol": "https",
+					"host": [
+						"dev71008",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"change_request",
+						"ae63fa7597202110e5153bc3f153afce"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://dev71008.service-now.com/api/now/table/change_request/a331fa3597202110e5153bc3f153af9b",
+					"protocol": "https",
+					"host": [
+						"dev71008",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"change_request",
+						"a331fa3597202110e5153bc3f153af9b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query_Param",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "applicat",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://dev71008.service-now.com/api/now/table/change_request?sys_id=ae63fa7597202110e5153bc3f153afce",
+					"protocol": "https",
+					"host": [
+						"dev71008",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"change_request"
+					],
+					"query": [
+						{
+							"key": "sys_id",
+							"value": "ae63fa7597202110e5153bc3f153afce"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ChangeRequest_xml",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"var content=xml2Json(responseBody);\r",
+							"console.log(content.response.result.sys_id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<request>\r\n    <entry>\r\n        <description>Had a great Weekend</description>\r\n    </entry>\r\n</request>"
+				},
+				"url": {
+					"raw": "https://dev71008.service-now.com/api/now/table/change_request",
+					"protocol": "https",
+					"host": [
+						"dev71008",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"change_request"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "m@hem3A@2JVF",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "admin",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
