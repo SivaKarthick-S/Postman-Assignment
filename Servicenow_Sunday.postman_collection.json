@@ -1,0 +1,262 @@
+{
+	"info": {
+		"_postman_id": "26abc987-d9be-449c-b2d4-21860187e430",
+		"name": "Servicenow_Sunday",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25417318"
+	},
+	"item": [
+		{
+			"name": "ChangeRequest",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"ChangeRequest\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://dev71008.service-now.com/api/now/table/change_request?sysparm_fields=sys_id",
+					"protocol": "https",
+					"host": [
+						"dev71008",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"change_request"
+					],
+					"query": [
+						{
+							"key": "sysparm_fields",
+							"value": "sys_id"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PostIncident",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"PostIncident\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"\r",
+							"    pm.test(\"Post\", function () {\r",
+							"        pm.expect(pm.response.text()).to.include(\"Experience with Postman\");\r",
+							"    });\r",
+							"});\r",
+							"var res=pm.response.json();\r",
+							"console.log(res.result.sys_id)\r",
+							"\r",
+							"  \r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"short_description\": \"This is my First Experience with Postman\",\r\n    \"description\": \"Experience with Postman\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev71008.service-now.com/api/now/table/incident",
+					"protocol": "https",
+					"host": [
+						"dev71008",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateIncident",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"short_description\": \"Postman session is over\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dev71008.service-now.com/api/now/table/incident/00562d2197a06110e5153bc3f153af82",
+					"protocol": "https",
+					"host": [
+						"dev71008",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident",
+						"00562d2197a06110e5153bc3f153af82"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteIncident",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://dev71008.service-now.com/api/now/table/incident/00562d2197a06110e5153bc3f153af82",
+					"protocol": "https",
+					"host": [
+						"dev71008",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"incident",
+						"00562d2197a06110e5153bc3f153af82"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ChangeRequest_XML",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"var content=xml2Json(responseBody);\r",
+							"console.log(content.response.result.sys_id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Transfer-Encoding",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/xml",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<request>\r\n    <entry>\r\n        <short_description>Testleaf</short_description>\r\n    </entry>\r\n</request>"
+				},
+				"url": {
+					"raw": "https://dev71008.service-now.com/api/now/table/change_request",
+					"protocol": "https",
+					"host": [
+						"dev71008",
+						"service-now",
+						"com"
+					],
+					"path": [
+						"api",
+						"now",
+						"table",
+						"change_request"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "m@hem3A@2JVF",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "admin",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
