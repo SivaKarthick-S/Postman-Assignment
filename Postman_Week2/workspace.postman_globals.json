@@ -1,0 +1,27 @@
+{
+	"id": "1e60e115-9cd7-4483-8198-cdabbf8ca654",
+	"values": [
+		{
+			"key": "Sysid",
+			"value": "175348e797202110e5153bc3f153af97",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "SysID",
+			"value": "5b2ea82b076061108a09f7108c1ed038",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "JiraID",
+			"value": "10013",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"name": "Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2023-01-29T09:20:15.872Z",
+	"_postman_exported_using": "Postman/10.8.7"
+}
